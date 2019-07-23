@@ -29,7 +29,7 @@ int main(void)
     idx = LSearch(arr, sizeof(arr)/sizeof(int), 7);
     if(idx == -1)
     {
-        printf("fail \n");
+        printf("실패 \n");
     }
     else
     {
