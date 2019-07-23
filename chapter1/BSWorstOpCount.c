@@ -39,7 +39,7 @@ int main(void)
     int arr3[50000] = {0,};
     int idx;
 
-    idx = BSearch(arr1, sizeof(arr1), 1);
+    idx = BSearch(arr1, sizeof(arr1)/sizeof(int), 1);
     if(idx == -1)
     {
         printf("fail \n");
@@ -49,7 +49,7 @@ int main(void)
         printf("target index : %d \n", idx);
     }
 
-    idx = BSearch(arr2, sizeof(arr2), 2);
+    idx = BSearch(arr2, sizeof(arr2)/sizeof(int), 2);
     if(idx == -1)
     {
         printf("fail \n");
@@ -59,7 +59,7 @@ int main(void)
         printf("target index : %d \n", idx);
     }
 
-    idx = BSearch(arr3, sizeof(arr3), 3);
+    idx = BSearch(arr3, sizeof(arr3)/sizeof(int), 3);
     if(idx == -1)
     {
         printf("fail \n");

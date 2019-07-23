@@ -34,7 +34,7 @@ int main(void)
     int arr[] = {1, 3, 5, 7, 9};
     int idx;
 
-    idx = BSearch(arr, sizeof(arr), 7);
+    idx = BSearch(arr, sizeof(arr)/sizeof(int), 7);
     if(idx == -1)
     {
         printf("fail \n");
@@ -44,7 +44,7 @@ int main(void)
         printf("target index : %d \n", idx);
     }
 
-    idx = BSearch(arr, sizeof(arr), 4);
+    idx = BSearch(arr, sizeof(arr)/sizeof(int), 4);
     if(idx == -1)
     {
         printf("fail \n");
