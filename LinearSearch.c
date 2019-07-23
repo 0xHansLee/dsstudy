@@ -19,21 +19,21 @@ int main(void)
     idx = LSearch(arr, sizeof(arr)/sizeof(int), 4);
     if(idx == -1)
     {
-        printf("탐색 실패 \n");
+        printf("fail \n");
     }
     else
     {
-        printf("타겟 저장 인덱스 : %d \n", idx);
+        printf("target index : %d \n", idx);
     }
 
     idx = LSearch(arr, sizeof(arr)/sizeof(int), 7);
     if(idx == -1)
     {
-        printf("탐색 실패 \n");
+        printf("fail \n");
     }
     else
     {
-        printf("타겟 저장 인덱스 : %d \n", idx);
+        printf("target index : %d \n", idx);
     }
     return 0;
 }
