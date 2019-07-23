@@ -16,7 +16,7 @@ int main(void)
     int arr[] = {3, 5, 2, 4, 9};
     int idx;
 
-    idx = LSearch(arr, sizeof(arr)/sizeof(int), 4);
+    idx = LSearch(arr, sizeof(arr), 4);
     if(idx == -1)
     {
         printf("fail \n");
@@ -26,10 +26,10 @@ int main(void)
         printf("target index : %d \n", idx);
     }
 
-    idx = LSearch(arr, sizeof(arr)/sizeof(int), 7);
+    idx = LSearch(arr, sizeof(arr), 7);
     if(idx == -1)
     {
-        printf("실패 \n");
+        printf("fail \n");
     }
     else
     {
