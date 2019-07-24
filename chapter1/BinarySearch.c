@@ -34,7 +34,7 @@ int main(void)
     int arr[] = {1, 3, 5, 7, 9};
     int idx;
 
-    idx = BSearch(arr, sizeof(arr)/sizeof(int), 7);
+    idx = BSearch(arr, sizeof(arr)/sizeof(int), 7); // sizeof(arr)는 byte size로 return함. 그래서 sizeof(int)로 나눠줘야 배열 원소 개수가 나옴.
     if(idx == -1)
     {
         printf("fail \n");
