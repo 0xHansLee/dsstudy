@@ -66,7 +66,7 @@ int main(void)
         }
     }
 
-    // (5)
+    // (5) d
     printf("남아있는 모든 사람의 정보 : \n");
     if(LFirst(&list, &pnamecard))
     {
