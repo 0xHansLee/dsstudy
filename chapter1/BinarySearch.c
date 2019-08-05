@@ -1,5 +1,5 @@
 #include <stdio.h>
-//tttt
+//ttttt
 int BSearch(int ar[], int len, int target)
 {
     int first = 0;
