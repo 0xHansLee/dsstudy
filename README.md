@@ -1,2 +1,2 @@
 # DSstudy
-Data structure study
+Data structure study w/ yeonsu
