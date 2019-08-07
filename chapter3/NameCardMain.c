@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "ArrayList.h"
 #include "ArrayList.c"
-#include "NameCard.h"
 #include "NameCard.c"
 
 int main(void)
