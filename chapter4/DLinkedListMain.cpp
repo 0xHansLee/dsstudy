@@ -15,7 +15,7 @@ int main(void)
     int data;
     list.ListInit();
 
-    // list.SetSortRule(WhoIsPrecede);
+    list.SetSortRule(WhoIsPrecede);
 
     list.LInsert(11);
     list.LInsert(33);
