@@ -23,7 +23,7 @@ class LinkedList {
 
         void ListInit();
         void LInsert(LData data);
-
+        // void FInsert(LData data);
         int LFirst(LData * pdata);
         int LNext(LData * pdata);
 

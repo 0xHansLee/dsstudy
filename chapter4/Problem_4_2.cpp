@@ -11,9 +11,9 @@ class Node {
 int main()
 {
     Node * head = new Node; // 포인터 초기화 안해주면 Segmentation fault (core dumped) 에러 발생
-    Node * tail{0};
-    Node * cur{0};
-    Node * newNode{0};
+    Node * tail;//{0};
+    Node * cur;//{0};
+    Node * newNode;//{0};
 
     int readData;
 

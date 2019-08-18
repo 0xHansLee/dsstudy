@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Pointcpp.cpp"
-// #include "Pointcpp.h"
-#include "DLinkedList.cpp"
-// #include "DLinkedList.h"
+// #include "Pointcpp.cpp"
+#include "Pointcpp.h"
+// #include "DLinkedList2.cpp"
+#include "DLinkedList2.h"
 
 int main(void)
 {
@@ -11,9 +11,10 @@ int main(void)
     Point * ppos;
 
     list.ListInit();
-
+    
     ppos = new Point;
     ppos->SetPointPos(2 ,1); // pointer의 함수를 사용할때는 ->
+    // ppos-> == (*ppos). when ppos is pointer of class
     list.LInsert(ppos);
 
     ppos = new Point;

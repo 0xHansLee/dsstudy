@@ -18,6 +18,7 @@ void LinkedList::LInsert(LData data)
         newNode->next = this->head->next;
         this->head->next = newNode;
         (this->numofData)++;
+        // void FInsert(LData data);
     }
     else
     {
@@ -83,11 +84,11 @@ void LinkedList::SetSortRule(int (*comp)(LData d1, LData d2))
     this->comp = comp;
 }
 
-// void FInsert(List * plist, LData data)
+// void LinkedList::FInsert(LData data)
 // {
 //     Node * newNode = new Node;
 //     newNode->data = data;
-//     newNode->next = plist->head->next;
+//     newNode->next = head->next;
 //     plist->head->next = newNode;
 //     (plist->numofData)++;
 // }
