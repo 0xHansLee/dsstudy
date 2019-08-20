@@ -16,7 +16,7 @@ int main(void)
     list.Insert(6);
     list.Insert(7);
     list.Insert(8);
-
+ 
     if(list.LFirst(&pdata))
     {
         if(pdata%2 == 0)

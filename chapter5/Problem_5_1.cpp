@@ -1,6 +1,6 @@
 #include <iostream>
 #include "CLinkedList.h"
-
+ 
 int main(void)
 {
     CList list;

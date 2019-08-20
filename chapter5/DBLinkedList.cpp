@@ -61,7 +61,7 @@ int DBLinkedList::LPrev(Data * pdata)
 
     return TRUE;
 }
-
+ 
 Data DBLinkedList::LRemove()
 {
     Node * rpos = this->cur;

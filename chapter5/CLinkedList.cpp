@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "CLinkedList.h"
-
+ 
 void Employee::SetEmployee(int number, const char* name)
 {
     this->number = number;
