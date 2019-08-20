@@ -24,23 +24,23 @@ int main(void)
             list.LRemove();
         }
 
-        // while(list.LNext(&pdata))
-        // {
-        //     if(pdata%2 == 0)
-        //     {
-        //         list.LRemove();
-        //     }
-        // }
+        while(list.LNext(&pdata))
+        {
+            if(pdata%2 == 0)
+            {
+                list.LRemove();
+            }
+        }
     }
 
-    // if(list.LFirst(&pdata))
-    // {
-    //     std::cout << pdata << ", " << std::endl;
+    if(list.LFirst(&pdata))
+    {
+        std::cout << pdata;
 
-    //     while(list.LNext(&pdata))
-    //     {
-    //         std::cout << pdata << ", " << std::endl;
-    //     }
-    // }
+        while(list.LNext(&pdata))
+        {
+            std::cout << ", "<< pdata;
+        }
+    }
     return 0;
 }
