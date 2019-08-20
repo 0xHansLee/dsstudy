@@ -3,7 +3,8 @@
 
 #define TRUE    1
 #define FALSE   0
- 
+// #include <iostream>
+
 class Employee
 {
     public:
@@ -39,7 +40,7 @@ class CList
         Data LRemove();
         int LCount();
 
-        int SearchDuty(const char * name, int day);
+        int SearchDuty(char * name, int day);
 };
 
 #endif

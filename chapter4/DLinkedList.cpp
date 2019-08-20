@@ -82,17 +82,3 @@ void LinkedList::SetSortRule(int (*comp)(LData d1, LData d2))
 {
     this->comp = comp;
 }
-
-// void FInsert(List * plist, LData data)
-// {
-//     Node * newNode = new Node;
-//     newNode->data = data;
-//     newNode->next = plist->head->next;
-//     plist->head->next = newNode;
-//     (plist->numofData)++;
-// }
-
-// void SInsert(LData data)
-// {
-
-// }

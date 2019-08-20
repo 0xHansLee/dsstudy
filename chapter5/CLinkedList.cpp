@@ -111,7 +111,7 @@ int CList::LCount()
     return this->numOfData;
 }
 
-int CList::SearchDuty(const char * name, int day)
+int CList::SearchDuty(char * name, int day)   // char *, const char *, string
 {
     Data pdata;
     if(this->tail == NULL)
@@ -152,12 +152,5 @@ int CList::SearchDuty(const char * name, int day)
             }
             
         }
-        // return TRUE;
     }
-    // else
-    // {
-        
-    //     return FALSE;
-    // }
-    
 }

@@ -19,14 +19,14 @@ int main(void)
  
     if(list.LFirst(&pdata))
     {
-        if(pdata%2 == 0)
+        if(pdata%3 == 0)
         {
             list.LRemove();
         }
 
         while(list.LNext(&pdata))
         {
-            if(pdata%2 == 0)
+            if(pdata%3 == 0)
             {
                 list.LRemove();
             }
@@ -42,5 +42,7 @@ int main(void)
             std::cout << ", "<< pdata;
         }
     }
+    std::cout << std::endl;
+    
     return 0;
 }

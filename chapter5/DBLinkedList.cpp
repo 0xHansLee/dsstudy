@@ -71,8 +71,8 @@ Data DBLinkedList::LRemove()
 
     rdata = this->cur->data;
 
-    this->cur->prev->next = this->cur->next; // rpos->next 로 하면 에러남
-    this->cur->next->prev = this->cur->prev;
+    this->cur->prev->next = rpos->next; // rpos->next 로 하면 에러남
+    this->cur->next->prev = rpos->prev;
     this->cur = this->cur->prev;
 
     delete rpos;

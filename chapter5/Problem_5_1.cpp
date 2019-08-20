@@ -1,5 +1,7 @@
 #include <iostream>
-#include "CLinkedList.h"
+// #include <string> -> can use c++ standard string 
+#include "CLinkedList.cpp"
+
  
 int main(void)
 {
@@ -20,7 +22,5 @@ int main(void)
     employee.SetEmployee(444,"D");
     list.Insert(employee);
 
-    // std::cout << employee.name << std::endl;
-
-    list.SearchDuty("D",8);
+    list.SearchDuty("A",8);
 }
