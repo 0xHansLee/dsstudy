@@ -1,12 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include "CLinkedList.h"
- 
-void Employee::SetEmployee(int number, const char* name)
-{
-    this->number = number;
-    strcpy(this->name, name);
-}
+#include "CLinkedListStack.h"
 
 void CList::Init()
 {
@@ -16,7 +10,7 @@ void CList::Init()
     this->numOfData = 0;
 }
 
-void CList::Insert(Data data)
+void CList::Insert(Data data) // insert at tail (No before)
 {
     Node * newNode = new Node;
     newNode->data = data;
@@ -111,46 +105,36 @@ int CList::LCount()
     return this->numOfData;
 }
 
-int CList::SearchDuty(char * name, int day)   // char *, const char *, string
+// --------------------------------- for stack --------------------------------------
+int CList::IsEmpty()
 {
-    Data pdata;
-    if(this->tail == NULL)
-    {
+    if(this->numOfData == 0)
+        return TRUE;
+    else
         return FALSE;
-    }
-
-    if(this->LFirst(&pdata))
-    {
-        if((strcmp(pdata.name, name) == 0))
-        {
-            for(int i=0; i<day; i++)
-            {
-                this->LNext(&pdata);
-            }
-            std::cout << pdata.name << " will work for duty!" << std::endl;
-            return TRUE;
-        }
-
-        while( this->LNext(&pdata) )
-        {
-            if(strcmp(pdata.name, name) == 0)
-            {
-                for(int i=0; i<day; i++)
-                {
-                    this->LNext(&pdata);
-                }
-                std::cout << pdata.name << " will work for duty!!" << std::endl;
-                return TRUE;
-                break;
-            }
-            else if (this->cur == this->tail)
-            {
-                
-                std::cout << "There is no worker under " << name << std::endl;
-                return FALSE;
-                break;
-            }
-            
-        }
-    }
+    
 }
+
+void CList::Push(Data data)
+{
+    this->InsertHead(data);
+}
+
+Data CList::Pop()
+{
+    Data rdata;
+    this->LFirst(&rdata);
+    // this->cur = this->tail;
+    // rdata = this->LRemove();
+    this->LRemove();
+
+    return rdata;
+}
+
+Data CList::Peek()
+{
+    this->cur = this->tail;
+    return this->cur->data;
+}
+
+

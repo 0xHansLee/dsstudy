@@ -7,6 +7,7 @@ int main(void)
 {
     CList list;
     Employee employee;
+    Data rr;
     
     list.Init();
 
@@ -21,6 +22,10 @@ int main(void)
 
     employee.SetEmployee(444,"D");
     list.Insert(employee);
+
+    // list.LFirst(&rr);
+    // list.LRemove();
+    // std::cout << list.LCount();
 
     list.SearchDuty("A",8);
 }
