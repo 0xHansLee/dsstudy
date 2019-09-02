@@ -84,5 +84,5 @@ void ConvToRPNExp(char exp[])
         convExp[idx++] = opStack.Pop(); // stack에 남아있는거 모두 이동
 
     strcpy(exp, convExp);
-    delete convExp;
+    delete[] convExp;       // char array delete
 }

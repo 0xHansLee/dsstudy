@@ -23,6 +23,7 @@ void ArrayStack::SPush(Data data)
 Data ArrayStack::SPop()
 {
     int rIdx;
+    Data tmp1;
 
     if(this->SIsEmpty())
     {
@@ -31,6 +32,9 @@ Data ArrayStack::SPop()
     }
 
     rIdx = this->topIndex;
+    // this->stackArr[rIdx] = NULL;
+    // tmp1 =  this->stackArr[rIdx];
+    // this->stackArr[rIdx] = NULL;
     this->topIndex -= 1;
 
     return this->stackArr[rIdx];
