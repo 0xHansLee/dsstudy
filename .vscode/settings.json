@@ -39,6 +39,7 @@
         "cstddef": "cpp",
         "memory": "cpp",
         "memory_resource": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "ctime": "cpp"
     }
 }
