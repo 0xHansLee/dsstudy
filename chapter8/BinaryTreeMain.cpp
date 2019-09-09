@@ -11,6 +11,12 @@
 //     InorderTraverse(bt->right);
 // }
 
+
+void ShowIntData(BTData data)
+{
+    std::cout << data << " ";
+}
+
 int main(void)
 {
     BTNode * bt1 = bt1->MakeBTreeNode(1);
@@ -37,15 +43,10 @@ int main(void)
 
     // InorderTraverse(bt1);
 
-    bt1->PreorderTraverse(bt1, ShowIntData);        // Traverse 함수의 input으로 root를 넣어줌. this같이 자기자신을 넣을 수는 없는지?
-    bt1->InorderTraverse(bt1, ShowIntData);        // 멤버 함수에서 자기 자신의 left, right을 recursive하게 불러줘야하기 때문에 input으로 받음
-    bt1->PostorderTraverse(bt1, ShowIntData);
+    bt1->PreorderTraverse(ShowIntData);        // Traverse 함수의 input으로 root를 넣어줌. this같이 자기자신을 넣을 수는 없는지?
+    bt1->InorderTraverse(ShowIntData);        // 멤버 함수에서 자기 자신의 left, right을 recursive하게 불러줘야하기 때문에 input으로 받음
+    bt1->PostorderTraverse(ShowIntData);
 
     return 0;
 
-}
-
-void ShowIntData(BTData data)
-{
-    std::cout << data << " ";
 }

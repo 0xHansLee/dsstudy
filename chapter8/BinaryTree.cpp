@@ -48,8 +48,8 @@ void BTNode::PreorderTraverse(VisitFuncPtr action)     // VisitFuncPtr 타입인
         return;
 
     action(this->data);
-    PreorderTraverse(this->left, action);
-    PreorderTraverse(this->right, action);
+    this->left->PreorderTraverse(action);
+    this->right->PreorderTraverse(action);
 }
 
 void BTNode::InorderTraverse(VisitFuncPtr action)
@@ -57,9 +57,9 @@ void BTNode::InorderTraverse(VisitFuncPtr action)
     if(this == NULL)
         return;
 
-    InorderTraverse(this->left, action);
+    this->left->InorderTraverse(action);
     action(this->data);
-    InorderTraverse(this->right, action);
+    this->right->InorderTraverse(action);
 }
 
 void BTNode::PostorderTraverse(VisitFuncPtr action)
@@ -67,7 +67,7 @@ void BTNode::PostorderTraverse(VisitFuncPtr action)
     if(this == NULL)
         return;
 
-    PostorderTraverse(this->left, action);
-    PostorderTraverse(this->right, action);
+    this->left->PostorderTraverse(action);
+    this->right->PostorderTraverse(action);
     action(this->data);
 }

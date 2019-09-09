@@ -73,7 +73,7 @@ Data DLDeque::RemoveFirst()
         }
         else
         {
-            // this->head->next->prev = NULL;      // prev를 NULL로 지정 안해줘도 delete하면 그냥 null값을 갖게되는지?
+            this->head->next->prev = NULL;      // prev를 NULL로 지정 안해줘도 delete하면 그냥 null값을 갖게되는지?
             this->head = this->head->next;
         }
 
@@ -102,7 +102,7 @@ Data DLDeque::RemoveLast()
         }
         else
         {
-            // this->tail->prev->next = NULL;
+            this->tail->prev->next = NULL;
             this->tail = this->tail->prev;
         }
 
