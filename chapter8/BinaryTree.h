@@ -4,6 +4,7 @@
 typedef int BTData;
 typedef void (*VisitFuncPtr)(BTData data);
 
+
 class BTNode
 {
     public:
@@ -24,6 +25,9 @@ class BTNode
         void PreorderTraverse(VisitFuncPtr action);
         void InorderTraverse(VisitFuncPtr action);
         void PostorderTraverse(VisitFuncPtr action);
+
+        typedef void (*DeleteAct)(BTNode * rNode);      // 위의 typedef에 넣으면 BTNode가 declare안되서 안됨.
+        void DeleteTree(DeleteAct action);
 };
 
 // class BinTree

@@ -45,7 +45,10 @@ void BTNode::MakeRightSubTree(BTNode * sub)
 void BTNode::PreorderTraverse(VisitFuncPtr action)     // VisitFuncPtr 타입인 action은 BTData를 매개변수로 가짐
 {
     if(this == NULL)
+    {
+        // std::cout << "Empty!" << std::endl;
         return;
+    }
 
     action(this->data);
     this->left->PreorderTraverse(action);
@@ -57,9 +60,17 @@ void BTNode::InorderTraverse(VisitFuncPtr action)
     if(this == NULL)
         return;
 
+    if(!(this->GetData() >= 0 && this->GetData() <= 9))
+    {
+        std::cout << "(";
+    }
     this->left->InorderTraverse(action);
     action(this->data);
     this->right->InorderTraverse(action);
+    if(!(this->GetData() >= 0 && this->GetData() <= 9))
+    {
+        std::cout << ")";
+    }
 }
 
 void BTNode::PostorderTraverse(VisitFuncPtr action)
@@ -70,4 +81,34 @@ void BTNode::PostorderTraverse(VisitFuncPtr action)
     this->left->PostorderTraverse(action);
     this->right->PostorderTraverse(action);
     action(this->data);
+}
+
+// void BTNode::DeleteTree()
+// {
+//     BTNode * rLeft = new BTNode;
+//     BTNode * rRight = new BTNode;
+//     BTNode * rCenter = new BTNode;
+
+//     rLeft = this->GetLeftSubTree();
+//     rRight = this->GetRightSubTree();
+//     rCenter = this;
+
+//     if(rLeft->left != NULL)
+//         rLeft->left->DeleteTree();
+
+//     if(rRight->right != NULL)
+//         rRight->right->DeleteTree();
+
+//     delete rCenter;
+// }
+
+void BTNode::DeleteTree(DeleteAct action)
+{
+    if(this == NULL)
+        return;         // terminal node만났을 때 return하면 deleteTree바깥으로 빠져나오는건 아닌지?
+
+    this->left->DeleteTree(action);
+    this->right->DeleteTree(action);
+    action(this);
+    std::cout << "free memory" << std::endl;
 }
