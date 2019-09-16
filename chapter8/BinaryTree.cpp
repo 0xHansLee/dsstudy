@@ -107,8 +107,9 @@ void BTNode::DeleteTree(DeleteAct action)
     if(this == NULL)
         return;         // terminal node만났을 때 return하면 deleteTree바깥으로 빠져나오는건 아닌지?
 
-    this->left->DeleteTree(action);
+    this->left->DeleteTree(action);         
+    // std::cout << "free memory " << this->data <<std::endl;
     this->right->DeleteTree(action);
     action(this);
-    std::cout << "free memory" << std::endl;
+    // std::cout << "free memory" << std::endl;
 }
