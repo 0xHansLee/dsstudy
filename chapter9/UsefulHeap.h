@@ -1,12 +1,15 @@
 #ifndef __USEFUL_HEAP_H__
 #define __USEFUL_HEAP_H__
 
+#include <string>
+
 #define TRUE        1
 #define FALSE       0
 
 #define HEAP_LEN    100
 
-typedef char HData;
+// typedef char HData;
+typedef std::string HData;
 typedef int (*PriorityComp)(HData d1, HData d2);
 
 class Heap
