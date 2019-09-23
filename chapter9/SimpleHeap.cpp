@@ -29,6 +29,7 @@ void Heap::Insert(HData data, Priority pr)
     {
         if(idx/2 == 0)
             exit(-1);
+            // break;
         
         // tmpElem.data = this->heapArr[numOfData].data;
         // tmpElem.pr = this->heapArr[numOfData].pr;
