@@ -36,16 +36,16 @@ int MedianOfThree(int arr[], int left, int right)
 
 int Partition(int arr[], int left, int right)
 {
-    // int pivot = arr[left];
-    int pivot, pIdx;
+    int pivot = arr[left];
+    // int pivot, pIdx;
     int low = left+1;
     int high = right;
 
     // pivot for median value
-    int mid = (left+right)/2;
-    pIdx = FindMidIdx(arr, left, mid, right);
-    pivot = arr[pIdx];
-    Swap(arr, left, pIdx);
+    // int mid = (left+right)/2;
+    // pIdx = FindMidIdx(arr, left, mid, right);
+    // pivot = arr[pIdx];
+    // Swap(arr, left, pIdx);
 
     // pIdx = MedianOfThree(arr, left, right);
     // pivot = arr[pIdx];
@@ -72,7 +72,7 @@ int Partition(int arr[], int left, int right)
 
 void QuickSort(int arr[], int left, int right)
 {
-    if(left <= right)
+    if(left < right)
     {
         int pivot = Partition(arr, left, right);
         QuickSort(arr, left, pivot-1);
