@@ -91,34 +91,34 @@ void BTNode::DeleteTree(DeleteAct action)
     action(this);
 }
 
-BTNode * RemoveLeftSubTree(BTNode * pNode)
+BTNode * BTNode::RemoveLeftSubTree()
 {
     BTNode * delNode;
-    if(pNode != NULL)
+    if(this != NULL)
     {
-        delNode = pNode->left;
-        pNode->left = NULL;
+        delNode = this->left;
+        this->left = NULL;
     }
     return delNode;
 }
 
-BTNode * RemoveRightSubTree(BTNode * pNode)
+BTNode * BTNode::RemoveRightSubTree()
 {
     BTNode * delNode;
-    if(pNode != NULL)
+    if(this != NULL)
     {
-        delNode = pNode->right;
-        pNode->right = NULL;
+        delNode = this->right;
+        this->right = NULL;
     }
     return delNode;
 }
 
-void ChangeLeftSubTree(BTNode * pNode, BTNode * sub)
+void BTNode::ChangeLeftSubTree(BTNode * sub)
 {
-    pNode->left = sub;
+    this->left = sub;
 }
 
-void ChangeRightSubTree(BTNode * pNode, BTNode * sub)
+void BTNode::ChangeRightSubTree(BTNode * sub)
 {
-    pNode->right = sub;
+    this->right = sub;
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "BinarySearchTree2.h"
+#include "BinaryTree3.h"
 
 #define ZERO    0
 #define ONE     1
@@ -79,10 +80,22 @@ BTNode * BSTree::BSTSearch(BSTData target)
     return tempNode;
 }
 
+int WhatType(BTNode * node)
+{
+    if(node->GetLeftSubTree() == NULL && node->GetRightSubTree() == NULL)       // 1번 케이스
+        return ZERO;
+
+    else if(node->GetLeftSubTree() == NULL || node->GetRightSubTree() == NULL)  // 2번 케이스
+        return ONE;
+
+    else                                                                        // 3번 케이스
+        return TWO;
+}
+
 BTNode * BSTree::BSTRemove(BSTData target)
 {
     // 삭제할 노드가  root노드일때 예외처리 필요
-
+    
     BTNode * delNode;
     BTNode * parentNode;
 
@@ -91,6 +104,13 @@ BTNode * BSTree::BSTRemove(BSTData target)
         std::cout << "There is no binary search tree to remove" << std::endl;
         exit(-1);
     }
+
+    // // target이 root인지 확인
+    // if(this->rootNode->data == target)
+    // {
+    //     BTNode * tRoot = new BTNode;
+    //     tRoot->MakeRightSubTree(this->rootNode);
+    // }
 
     // target 노드 찾음
     delNode = this->rootNode;
@@ -110,23 +130,23 @@ BTNode * BSTree::BSTRemove(BSTData target)
     switch(WhatType(delNode)){
         case ZERO:  // 말단노드일때
         {
-            if(parentNode->GetLeftSubTree.data == target)
-                this->RemoveLeftSubTree(parentNode);
+            if(parentNode->GetLeftSubTree()->GetData() == target)
+                delNode = parentNode->RemoveLeftSubTree();
 
             else
-                this->RemoveRightSubTree(parentNode);
+                delNode = parentNode->RemoveRightSubTree();
 
             break;
         }
         case ONE:   // 한쪽 노드만 있을때
         {
-            if(delNode->GetLeftSubTree == NULL)
+            if(delNode->GetLeftSubTree() == NULL)
             {
-                this->ChangeRightSubTree(parentNode, delNode->GetRightSubTree());
+                parentNode->ChangeRightSubTree(delNode->GetRightSubTree());
             }
             else
             {
-                this->ChangeRightSubTree(parentNode, delNode->GetLeftSubTree());
+                parentNode->ChangeRightSubTree(delNode->GetLeftSubTree());
             }
 
             break;
@@ -136,7 +156,8 @@ BTNode * BSTree::BSTRemove(BSTData target)
             // 오른쪽 노드의 가장 작은거 찾기
             BTNode * subRoot = delNode->GetRightSubTree();
             BTNode * tNode = subRoot;
-            BTNode * tpNode = tNode;
+            BTNode * tpNode = delNode;
+            // BTNode * rNode = new BTNode;             // memory 삭제 필요?
             
             while(tNode->GetLeftSubTree() != NULL)      // Right subtree에서 가장 작은 거 찾음
             {
@@ -145,14 +166,15 @@ BTNode * BSTree::BSTRemove(BSTData target)
             }
 
             // 그걸 삭제할 노드에 복사
-            delNode->data = tNode->data;
+            delNode->data = tNode->data;                // data만 대체하고
+            // rNode = tNode;
             delNode = tNode;
             
             // 연결 (당연히 왼쪽에 있는 subtree를 change해야하는것 아닌가? 오른쪽 서브트리중 가장 작은 것(왼쪽)으로 대체했기 때문)
-            this->ChangeLeftSubTree(tpNode, tNode->GetRightSubTree);
+            tpNode->ChangeLeftSubTree(tNode->GetRightSubTree());      // 연결하고 끝
         }
     }
-
+    return delNode;
 }
 
 void ShowIntData(int data)
@@ -165,14 +187,3 @@ void BSTree::BSTShowAll()
     this->InorderTraverse(ShowIntData);
 }
 
-int WhatType(BTNode * node)
-{
-    if(node->GetLeftSubTree() == NULL && node->GetRightSubTree() == NULL)       // 1번 케이스
-        return ZERO;
-
-    else if(node->GetLeftSubTree() == NULL || node->GetRightSubTree() == NULL)  // 2번 케이스
-        return ONE;
-
-    else                                                                        // 3번 케이스
-        return TWO;
-}

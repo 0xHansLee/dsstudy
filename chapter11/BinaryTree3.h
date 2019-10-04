@@ -29,11 +29,11 @@ class BTNode
         typedef void (*DeleteAct)(BTNode * rNode);      // 위의 typedef에 넣으면 BTNode가 declare안되서 안됨.
         void DeleteTree(DeleteAct action);
 
-        BTNode * RemoveLeftSubTree(BTNode * pNode);
-        BTNode * RemoveRightSubTree(BTNode * pNode);
+        BTNode * RemoveLeftSubTree();
+        BTNode * RemoveRightSubTree();
 
-        void ChangeLeftSubTree(BTNode * pNode, BTNode * sub);
-        void ChangeRightSubTree(BTNode * pNode, BTNode * sub);
+        void ChangeLeftSubTree(BTNode * sub);
+        void ChangeRightSubTree(BTNode * sub);
 };
 
 #endif
