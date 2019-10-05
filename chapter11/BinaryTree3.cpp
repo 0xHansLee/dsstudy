@@ -59,17 +59,9 @@ void BTNode::InorderTraverse(VisitFuncPtr action)
     if(this == NULL)
         return;
 
-    if(!(this->GetData() >= 0 && this->GetData() <= 9))
-    {
-        std::cout << "(";
-    }
     this->left->InorderTraverse(action);
     action(this->data);
     this->right->InorderTraverse(action);
-    if(!(this->GetData() >= 0 && this->GetData() <= 9))
-    {
-        std::cout << ")";
-    }
 }
 
 void BTNode::PostorderTraverse(VisitFuncPtr action)

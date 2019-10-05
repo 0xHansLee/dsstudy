@@ -16,28 +16,33 @@ int main(void)
     bsTree.BSTInsert(7);
     // std::cout << bsTree.rootNode->right->left->right->GetData() << std::endl;
 
-    // bsTree.BSTShowAll();
+    bsTree.BSTShowAll();
     std::cout << std::endl;
-    sNode = bsTree.BSTRemove(3);
+    sNode = bsTree.BSTRemove(3);    // Remove 1 child node (delNode is on the left side)
     delete sNode;
-    std::cout << bsTree.rootNode->left->right->left->GetData() << std::endl;
+    // std::cout << bsTree.rootNode->left->right->left->GetData() << std::endl;
 
-    // bsTree.BSTShowAll();
-    // std::cout << std::endl;
-    // sNode = bsTree.BSTRemove(3);
-    // delete sNode;
+    bsTree.BSTShowAll();
+    std::cout << std::endl;
+    sNode = bsTree.BSTRemove(4);    // Remove 1 child node (delNode is on the right side)
+    delete sNode;
 
-    // bsTree.BSTShowAll();
-    // std::cout << std::endl;
-    // sNode = bsTree.BSTRemove(3);
-    // delete sNode;
+    bsTree.BSTShowAll();
+    std::cout << std::endl;
+    sNode = bsTree.BSTRemove(7);    // Remove 0 child node (terminal node)
+    delete sNode;
 
-    // bsTree.BSTShowAll();
-    // std::cout << std::endl;
-    // sNode = bsTree.BSTRemove(3);
-    // delete sNode;
+    bsTree.BSTShowAll();
+    std::cout << std::endl;
+    sNode = bsTree.BSTRemove(8);    // Remove 2 child node
+    delete sNode;
 
-    // bsTree.BSTShowAll();
-    // std::cout << std::endl;
+    bsTree.BSTShowAll();
+    std::cout << std::endl;
+    sNode = bsTree.BSTRemove(5);    // Remove 2 child node (root node)
+    delete sNode;
+
+    bsTree.BSTShowAll();
+    std::cout << std::endl;
     return 0;
 }

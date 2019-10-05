@@ -130,7 +130,11 @@ BTNode * BSTree::BSTRemove(BSTData target)
     switch(WhatType(delNode)){
         case ZERO:  // 말단노드일때
         {
-            if(parentNode->GetLeftSubTree()->GetData() == target)
+            // std::cout << "terminal node" << std::endl;
+            // std::cout << parentNode->data << std::endl; // 6
+            // std::cout << parentNode->GetRightSubTree()->data << std::endl; // 7
+            // if(parentNode->GetLeftSubTree()->data == target)        // 이렇게하면 left가 null인데 데이터에 접근하려해서 segmentation fault
+            if(parentNode->GetLeftSubTree() == delNode)
                 delNode = parentNode->RemoveLeftSubTree();
 
             else
@@ -140,13 +144,33 @@ BTNode * BSTree::BSTRemove(BSTData target)
         }
         case ONE:   // 한쪽 노드만 있을때
         {
-            if(delNode->GetLeftSubTree() == NULL)
+            if(delNode->GetLeftSubTree() == NULL)       // delNode의 왼쪽이 없을 때
             {
-                parentNode->ChangeRightSubTree(delNode->GetRightSubTree());
+                // std::cout << "left null" << std::endl;
+                if(parentNode->GetLeftSubTree() == delNode)
+                {
+                    parentNode->ChangeLeftSubTree(delNode->GetRightSubTree());
+                }
+                else
+                {
+                    parentNode->ChangeRightSubTree(delNode->GetRightSubTree());
+                }
             }
-            else
+            else        // delNode의 오른쪽이 없을 때
             {
-                parentNode->ChangeRightSubTree(delNode->GetLeftSubTree());
+                // std::cout << "right null" << std::endl;
+                // std::cout << parentNode->data << std::endl;
+                // std::cout << delNode->data << std::endl;
+                // std::cout << delNode->GetLeftSubTree()->data << std::endl;
+                if(parentNode->GetLeftSubTree() == delNode)
+                {
+                    parentNode->ChangeLeftSubTree(delNode->GetLeftSubTree());
+                }
+                else
+                {
+                    parentNode->ChangeRightSubTree(delNode->GetLeftSubTree());
+                }
+                // std::cout << parentNode->GetLeftSubTree()->data << std::endl;
             }
 
             break;
@@ -157,7 +181,9 @@ BTNode * BSTree::BSTRemove(BSTData target)
             BTNode * subRoot = delNode->GetRightSubTree();
             BTNode * tNode = subRoot;
             BTNode * tpNode = delNode;
-            // BTNode * rNode = new BTNode;             // memory 삭제 필요?
+            // std::cout << parentNode->data << std::endl;
+            // std::cout << delNode->data << std::endl;
+            // std::cout << subRoot->data << std::endl;
             
             while(tNode->GetLeftSubTree() != NULL)      // Right subtree에서 가장 작은 거 찾음
             {
@@ -165,13 +191,24 @@ BTNode * BSTree::BSTRemove(BSTData target)
                 tNode = tNode->GetLeftSubTree();        // 대체할 노드
             }
 
+            // std::cout << tpNode->data << std::endl;
+            // std::cout << tNode->data << std::endl;
+
             // 그걸 삭제할 노드에 복사
             delNode->data = tNode->data;                // data만 대체하고
+            // std::cout << delNode->data << std::endl;    // 9
             // rNode = tNode;
             delNode = tNode;
+            // std::cout << delNode->data << std::endl; // 9
+            // if(delNode->GetLeftSubTree() == NULL && delNode->GetRightSubTree() == NULL)
+            //     std::cout << "terminal node" << std::endl;
             
             // 연결 (당연히 왼쪽에 있는 subtree를 change해야하는것 아닌가? 오른쪽 서브트리중 가장 작은 것(왼쪽)으로 대체했기 때문)
-            tpNode->ChangeLeftSubTree(tNode->GetRightSubTree());      // 연결하고 끝
+            if(tpNode->GetLeftSubTree() == delNode)
+                tpNode->ChangeLeftSubTree(tNode->GetRightSubTree());      // 연결하고 끝
+
+            else
+                tpNode->ChangeRightSubTree(tNode->GetRightSubTree());
         }
     }
     return delNode;
@@ -184,6 +221,6 @@ void ShowIntData(int data)
 
 void BSTree::BSTShowAll()
 {
-    this->InorderTraverse(ShowIntData);
+    this->rootNode->InorderTraverse(ShowIntData);
 }
 
