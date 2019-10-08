@@ -1,6 +1,6 @@
 #include <iostream>
-#include "BinarySearchTree2.h"
-#include "BinaryTree3.h"
+#include "BinarySearchTree3.h"
+#include "BinaryTree4.h"
 
 #define ZERO    0
 #define ONE     1
@@ -56,6 +56,8 @@ void BSTree::BSTInsert(BSTData data)
         tempParent->MakeLeftSubTree(nNode);
     else
         tempParent->MakeRightSubTree(nNode);
+
+    this->rootNode = this->Rebalance();
 }
 
 BTNode * BSTree::BSTSearch(BSTData target)
@@ -191,7 +193,8 @@ BTNode * BSTree::BSTRemove(BSTData target)
     }
     if(rootFlag == 1)
         delete parentNode;
-        
+
+    this->rootNode = this->Rebalance();
     return delNode;
 }
 
@@ -205,3 +208,24 @@ void BSTree::BSTShowAll()
     this->rootNode->InorderTraverse(ShowIntData);
 }
 
+BTNode * BSTree::Rebalance()
+{
+    int heightDiff = this->rootNode->GetHeightDiff();
+    // std::cout << heightDiff;
+
+    if(heightDiff > 1)
+    {
+        if(this->rootNode->left->GetHeightDiff() > 0)
+            return this->RotateLL();
+        else
+            return this->RotateLR();
+    }
+
+    if(heightDiff < -1)
+    {
+        if(this->rootNode->right->GetHeightDiff() < 0)
+            return this->RotateRR();
+        else
+            return this->RotateRL();
+    }
+}

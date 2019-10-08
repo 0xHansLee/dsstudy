@@ -1,7 +1,7 @@
 #ifndef __BINARY_SEARCH_TREE2_H__
 #define __BINART_SEARCH_TREE2_H__
 
-#include "BinaryTree3.h"
+#include "BinaryTree4.h"
 
 typedef BTData BSTData;
 
@@ -18,6 +18,8 @@ class BSTree : public BTNode
 
         BTNode * BSTRemove(BSTData target);
         void BSTShowAll();
+
+        BTNode * Rebalance();
 };
 
 #endif
