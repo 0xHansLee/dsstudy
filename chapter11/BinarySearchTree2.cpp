@@ -114,6 +114,7 @@ BTNode * BSTree::BSTRemove(BSTData target)
 
     // target 노드 찾음
     delNode = this->rootNode;
+    // parentNode = delNode;
     
     while(delNode->data != target)
     {

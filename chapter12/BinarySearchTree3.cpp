@@ -216,16 +216,18 @@ BTNode * BSTree::Rebalance()
     if(heightDiff > 1)
     {
         if(this->rootNode->left->GetHeightDiff() > 0)
-            return this->RotateLL();
+            return this->rootNode->RotateLL();
         else
-            return this->RotateLR();
+            return this->rootNode->RotateLR();
     }
 
     if(heightDiff < -1)
     {
         if(this->rootNode->right->GetHeightDiff() < 0)
-            return this->RotateRR();
+            return this->rootNode->RotateRR();
         else
-            return this->RotateRL();
+            return this->rootNode->RotateRL();
     }
+
+    return this->rootNode;
 }
