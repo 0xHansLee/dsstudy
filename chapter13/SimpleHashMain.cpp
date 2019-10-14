@@ -17,6 +17,7 @@ int main(void)
     myTbl.TBLInit(MyHashFunc);
 
     np->MakePersonData(20120003, "Lee", "Seoul");
+    np->ShowPerInfo();
     myTbl.TBLInsert(np->GetSSN(), np);
 
     np->MakePersonData(20120012, "Kim", "Jeju");
