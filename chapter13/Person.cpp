@@ -15,11 +15,13 @@ void Person::ShowPerInfo()
     std::cout << "addr : " << this->addr << std::endl;
 }
 
-Person * Person::MakePersonData(int ssn, char * name, char * addr)
+Person * Person::MakePersonData(int ssn, std::string name, std::string addr)
 {
-    Person * newP = new Person;
+    Person * newP = new Person();
     newP->ssn = ssn;
-    strcpy(newP->name, name);
-    strcpy(newP->addr, addr);
+    // strcpy(newP->name, name);
+    // strcpy(newP->addr, addr);
+    newP->name = name;
+    newP->addr = addr;
     return newP;
 }

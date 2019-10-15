@@ -9,12 +9,12 @@ class Person
 {
     public:
         int ssn;
-        char * name;
-        char * addr;
+        std::string name;
+        std::string addr;
 
         int GetSSN();
         void ShowPerInfo();
-        Person * MakePersonData(int ssn, char * name, char * addr);
+        Person * MakePersonData(int ssn, std::string name, std::string addr);
 };
 
 #endif
