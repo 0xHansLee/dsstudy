@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstring>
-#include "ALGraphDFS.h"
+#include "ALGraphBFS.h"
 #include "../DLinkedList.h"
-#include "ArrayBaseStack.h"
+#include "CircularQueue.h"
 
 int WhoIsPrecede(int data1, int data2)
 {
@@ -12,7 +12,7 @@ int WhoIsPrecede(int data1, int data2)
         return 1;
 }
 
-void ALGraphDFS::Init(int nv)
+void ALGraphBFS::Init(int nv)
 {
     int i;
     this->adjList = new List[nv];
@@ -29,7 +29,7 @@ void ALGraphDFS::Init(int nv)
     }
 }
 
-void ALGraphDFS::Destroy()
+void ALGraphBFS::Destroy()
 {
     if(this->adjList != NULL)
         delete[] this->adjList;
@@ -38,14 +38,14 @@ void ALGraphDFS::Destroy()
         delete[] this->visitInfo;
 }
 
-void ALGraphDFS::AddEdge(int fromV, int toV)
+void ALGraphBFS::AddEdge(int fromV, int toV)
 {
     this->adjList[fromV].LInsert(toV);
     this->adjList[toV].LInsert(fromV);
     this->numE += 1;
 }
 
-void ALGraphDFS::ShowGraphEdgeInfo()
+void ALGraphBFS::ShowGraphEdgeInfo()
 {
     int i;
     int vx;
@@ -64,7 +64,7 @@ void ALGraphDFS::ShowGraphEdgeInfo()
     }
 }
 
-int ALGraphDFS::VisitVertex(int visitV)
+int ALGraphBFS::VisitVertex(int visitV)
 {
     if(this->visitInfo[visitV] == 0)
     {
@@ -75,51 +75,37 @@ int ALGraphDFS::VisitVertex(int visitV)
     return FALSE;
 }
 
-void ALGraphDFS::DFSShowGraphVertex(int startV)
+void ALGraphBFS::BFSShowGraphVertex(int startV)
 {
-    ArrayStack stack;
+    CQueue queue;
+    int trV = startV;
     int vx;
-    int trV;
-
-    stack.StackInit();
-    trV = startV;
-    // this->VisitVertex(this->adjList[trV].LFirst(&vx));
-    stack.SPush(trV);
-    this->VisitVertex(trV);
     
-    while(this->adjList[trV].LFirst(&vx))    // traverse linked list of adjList[trV]
-    {
-        int visitFlag = FALSE;
+    queue.Init();
+    this->VisitVertex(trV);
 
-        if(this->VisitVertex(vx))           // find unvisited node
+    while(this->adjList[trV].LFirst(&vx))
+    {
+        if(this->visitInfo[vx] == 0)
         {
-            stack.SPush(trV);                
-            trV = vx;
-            visitFlag = TRUE;
-            // this->adjList[trV].LFirst(&vx);
+            queue.Enqueue(vx);
+            this->VisitVertex(vx);
         }
+        while(this->adjList[trV].LNext(&vx))
+        {
+            if(this->visitInfo[vx] == 0)
+            {
+                queue.Enqueue(vx);
+                this->VisitVertex(vx);
+            }
+        }
+        // trV = queue.Dequeue();
+        if(queue.IsEmpty())
+            break;
         else
-        {
-            while(this->adjList[trV].LNext(&vx))
-            {
-                if(this->VisitVertex(vx))
-                {
-                    stack.SPush(trV);
-                    trV = vx;
-                    // this->adjList[trV].LFirst(&vx);
-                    visitFlag = TRUE;
-                    break;
-                }
-            }
-            if(visitFlag == FALSE)
-            {
-                if(stack.SIsEmpty())
-                    break;
-                else
-                    trV = stack.SPop();
-            }
-        }
+            trV = queue.Dequeue();
     }
+    
     for(int i=0; i<this->numV; i++)
     {
         this->visitInfo[i] = 0;
