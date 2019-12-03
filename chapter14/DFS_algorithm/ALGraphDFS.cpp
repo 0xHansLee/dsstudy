@@ -83,47 +83,44 @@ void ALGraphDFS::DFSShowGraphVertex(int startV)
 
     stack.StackInit();
     trV = startV;
-    this->VisitVertex(this->adjList[trV].LFirst(&vx));
-    stack.SPush(vx);
+    // this->VisitVertex(this->adjList[trV].LFirst(&vx));
+    stack.SPush(trV);
+    this->VisitVertex(trV);
     
     while(this->adjList[trV].LFirst(&vx))    // traverse linked list of adjList[trV]
     {
         int visitFlag = FALSE;
 
-        // if(this->VisitVertex(vx))           // find unvisited node
-        // {
-        //     stack.SPush(vx);                
-        //     trV = vx;
-        //     visitFlag = TRUE;
-        //     // this->adjList[trV].LFirst(&vx);
-        // }
-        // else
-        // {
-        while(this->adjList[trV].LNext(&vx))
+        if(this->VisitVertex(vx))           // find unvisited node
         {
-            if(this->VisitVertex(vx))
+            stack.SPush(trV);                
+            trV = vx;
+            visitFlag = TRUE;
+            // this->adjList[trV].LFirst(&vx);
+        }
+        else
+        {
+            while(this->adjList[trV].LNext(&vx))
             {
-                stack.SPush(vx);
-                trV = vx;
-                // this->adjList[trV].LFirst(&vx);
-                visitFlag = TRUE;
-                break;
+                if(this->VisitVertex(vx))
+                {
+                    stack.SPush(trV);
+                    trV = vx;
+                    // this->adjList[trV].LFirst(&vx);
+                    visitFlag = TRUE;
+                    break;
+                }
+            }
+            if(visitFlag == FALSE)
+            {
+                if(stack.SIsEmpty())
+                    break;
+                else
+                    trV = stack.SPop();
             }
         }
-        if(visitFlag == FALSE)
-        {
-            if(stack.SIsEmpty())
-                break;
-            else
-                trV = stack.SPop();
-        }
-        // }
-        
-        // this->VisitVertex(this->adjList[trV].LNext(&vx));
-        // stack.SPush(vx);
-        // trV = vx;
-        // this->adjList[trV].LFirst(&vx);
     }
+    
     for(int i=0; i<this->numV; i++)
     {
         this->visitInfo[i] = 0;

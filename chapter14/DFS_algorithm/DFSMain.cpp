@@ -20,9 +20,9 @@ int main(void)
     graph.ShowGraphEdgeInfo();
 
     graph.DFSShowGraphVertex(A); std::cout << std::endl;
-    // graph.DFSShowGraphVertex(C); std::cout << std::endl;
-    // graph.DFSShowGraphVertex(E); std::cout << std::endl;
-    // graph.DFSShowGraphVertex(G); std::cout << std::endl;
+    graph.DFSShowGraphVertex(C); std::cout << std::endl;
+    graph.DFSShowGraphVertex(E); std::cout << std::endl;
+    graph.DFSShowGraphVertex(G); std::cout << std::endl;
 
     graph.Destroy();
     return 0;
