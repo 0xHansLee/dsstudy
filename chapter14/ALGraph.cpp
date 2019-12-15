@@ -9,7 +9,7 @@ int WhoIsPrecede(int data1, int data2)
     else
         return 1;
 }
-
+ 
 void ALGraph::Init(int nv)
 {
     int i;
